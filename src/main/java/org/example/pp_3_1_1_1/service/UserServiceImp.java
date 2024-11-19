@@ -17,9 +17,10 @@ public class UserServiceImp implements UserService {
     private UserDao userDao;
 
     @Autowired
-    public void setUserDao(UserDao userDao) {
+    public UserServiceImp(UserDao userDao) {
         this.userDao = userDao;
     }
+
 
     @Override
     public void addUser(User user) {
@@ -38,6 +39,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public User getUserById(Long id) {
+
         return userDao.getUserById(id);
     }
 

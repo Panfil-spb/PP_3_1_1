@@ -33,8 +33,7 @@ public class UserController {
 
     @GetMapping(value = "users/add")
     public String newUser(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+        model.addAttribute("user", new User());
         return "addUser";
     }
 
@@ -64,8 +63,8 @@ public class UserController {
     }
 
     @GetMapping("users/delete")
-    public String deleteUserById(@RequestParam("id") Long id) {
-        userService.deleteUser(id);
+    public String deleteUserById(@RequestParam("id") String id) {
+        userService.deleteUser(Long.parseLong(id));
         return "redirect:/";
     }
 
